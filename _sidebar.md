@@ -3,3 +3,4 @@
 - Resoluciones
   - [3280](docs/resolucion/3280.md)
   - [4505](docs/resolucion/4505.md)
+  - [2335](docs/resolucion/2335.md)
