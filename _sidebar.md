@@ -1,3 +1,5 @@
+- Glosario 
+  - [Glosario](_glossary.md)
 - Resoluciones
   - [3280](docs/resolucion/3280.md)
- 
+  - [4505](docs/resolucion/4505.md)
