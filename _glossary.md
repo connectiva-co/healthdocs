@@ -1,18 +1,16 @@
 # Glosario
 
-## A
-
-## E
+# E
 
 #### EAPB
 Empresas Administradoras de Planes de Beneficios
 
-## I
+# I
 
 #### IPS
 Instituciones prestadoras de Servicios de Salud
 
-## S
+# S
 
 #### SISPRO
 Sistema Integral de Información de la Protección Social
