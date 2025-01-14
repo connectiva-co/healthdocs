@@ -10,14 +10,11 @@ Empresas Administradoras de Planes de Beneficios
 #### IPS
 Instituciones prestadoras de Servicios de Salud
 
-# R
-
+## R
 #### REPS
 
 Registro Especial de Prestadores de Servicios de Salud
 
-# S
-## R
 #### RIPS
 Los Registros Individuales de Prestación de Servicios de Salud (RIPS) son un conjunto de datos que contienen información sobre las prestaciones de salud de los usuarios. Son utilizados por el Sistema General de Seguridad Social en Salud (SGSSS) para: 
 - Gestionar, regular y supervisar los servicios de salud
@@ -55,4 +52,9 @@ El SGSSS ofrece una serie de beneficios, como:
 - Atención médica general y especializada
 - Diagnóstico
 - Medicamentos
-- Apoyo terapéutico
+- Apoyo terapéutico#
+
+## U
+
+#### UVT
+La Unidad de Valor Tributario – UVT, es la medida de valor que permite ajustar los valores contenidos en las disposiciones relativas a los impuestos y obligaciones administrados por la Dirección de Impuestos y Aduanas Nacionales
