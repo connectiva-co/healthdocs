@@ -10,6 +10,12 @@ Empresas Administradoras de Planes de Beneficios
 #### IPS
 Instituciones prestadoras de Servicios de Salud
 
+# R
+
+#### REPS
+
+Registro Especial de Prestadores de Servicios de Salud
+
 # S
 
 #### SISPRO
