@@ -10,6 +10,13 @@ Empresas Administradoras de Planes de Beneficios
 #### IPS
 Instituciones prestadoras de Servicios de Salud
 
+# R
+
+#### REPS
+
+Registro Especial de Prestadores de Servicios de Salud
+
+# S
 ## R
 #### RIPS
 Los Registros Individuales de Prestación de Servicios de Salud (RIPS) son un conjunto de datos que contienen información sobre las prestaciones de salud de los usuarios. Son utilizados por el Sistema General de Seguridad Social en Salud (SGSSS) para: 
