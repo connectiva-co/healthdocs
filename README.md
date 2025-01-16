@@ -29,3 +29,14 @@ tabla cups actualizada con soat
 Contratación, RIPS
 módulo parametrización
 
+### RIPS
+[Resolución 3374 de 2000](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/Resoluci%C3%B3n_3374_de_2000.pdf)
+Define el RIPS como el conjunto de datos que identifica las actividades de salud que se realizan a las personas. 
+
+[Resolución 2275 de 2023](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No%202275%20de%202023.pdf)
+Es la norma vigente que regula el proceso de Facturación Electrónica de Venta (FEV-RIPS). Esta resolución amplía y precisa algunos requisitos para garantizar una mayor eficiencia y control en el uso de la factura electrónica. 
+
+[Resolución 1557 de 2023](https://www.minsalud.gov.co/Normatividad_Nuevo/Resoluci%C3%B3n%20No%201557%20de%202023.pdf)
+Aplica a los prestadores de servicios de salud, proveedores de tecnologías en salud, entidades promotoras de salud, entidades administradoras de regímenes, secretarías de salud, compañías de seguros, administradoras de planes voluntarios de salud, administradoras de riesgos laborales, entre otros. 
+
+
