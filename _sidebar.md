@@ -5,6 +5,7 @@
   - [202](docs/resolucion/202.md)
   - [441](docs/resolucion/441.md)
   - [2275](docs/resolucion/2275.md)
+    - [Anexo 2](docs/anexo/2275/2.md)
   - [2335](docs/resolucion/2335.md)
   - [3047](docs/resolucion/3047.md)
     - [Anexo 3](docs/anexo/3047/3.md)
