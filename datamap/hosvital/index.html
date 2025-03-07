@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de JSON</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="h-screen bg-gray-100">
+    <div class="flex h-full">
+        <div class="w-1/4 bg-white shadow-lg p-4 overflow-y-auto">
+            <input type="text" id="searchInputTable" placeholder="Buscar por tabla o descripción" class="w-full p-2 mb-4 border border-gray-300 rounded">
+            <input type="text" id="searchInputColumns" placeholder="Buscar columnas" class="w-full p-2 mb-4 border border-gray-300 rounded">
+            <div id="menu"></div>
+        </div>
+
+        <div class="w-3/4 p-4 overflow-y-auto" id="content"></div>
+    </div>
+
+    <script>
+        let jsonData;
+
+        fetch('tables.json')
+            .then(response => response.json())
+            .then(data => {
+                jsonData = data;
+                renderMenu();
+            });
+
+        const menu = document.getElementById('menu');
+        const content = document.getElementById('content');
+        let currentTableKey = null;
+        let lastSearchTerm = '';
+
+        function renderMenu(filteredKeys = null) {
+            const keys = filteredKeys || Object.keys(jsonData);
+            menu.innerHTML = keys.map(key =>
+                `<button class="block w-full text-left p-2 hover:bg-gray-200" onclick="renderTables('${key}')">${key}</button>`
+            ).join('');
+        }
+
+        function renderTables(key) {
+            currentTableKey = key;
+            const section = jsonData[key];
+            content.innerHTML = `
+        <h2 class="text-3xl font-bold">${key}</h2>
+        <h4 class="text-lg">${jsonData[key].description || ''}</h4>
+        <hr class="w-full" />
+    `;
+
+            renderColumns(section, lastSearchTerm);
+        }
+
+        function renderColumns(section, searchTerm = '') {
+            content.innerHTML += ['columns', 'subordinated', 'superordinated'].map(subKey => {
+                        if (section[subKey] && section[subKey].length > 0) {
+                            return `
+                <h5 class="text-2xl my-4">${subKey.toUpperCase()}</h5>
+                <table class="table-auto w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr>
+                            ${Object.keys(section[subKey][0]).map(col => `<th class="border border-gray-300 px-4 py-2">${col}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${section[subKey].map(item => {
+                            const matchesSearch = searchTerm && (
+                                item.name.toLowerCase().includes(searchTerm) || 
+                                (item.description && item.description.toLowerCase().includes(searchTerm))
+                            );
+
+                            return `
+                                <tr class="${matchesSearch ? 'bg-yellow-200' : ''}">
+                                    ${Object.values(item).map(val => `
+                                        <td class="border border-gray-300 px-4 py-2">
+                                            ${highlightMatch(val, searchTerm)}
+                                        </td>`).join('')}
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        return '';
+    }).join('');
+}
+
+function highlightMatch(text, searchTerm) {
+    if (!searchTerm) return text;
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    return text.toString().replace(regex, '<span class="bg-yellow-400 font-bold">$1</span>');
+}
+
+window.addEventListener('load', () => {
+    const searchInputTable = document.getElementById("searchInputTable");
+            const searchInputColumns = document.getElementById("searchInputColumns");
+
+            searchInputTable.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
+                lastSearchTerm = searchTerm;
+                const filteredKeys = Object.keys(jsonData).filter(key => {
+                    const section = jsonData[key];
+                    return key.toLowerCase().includes(searchTerm) || 
+                        section.description?.toLowerCase().includes(searchTerm) ||
+                        ['subordinated', 'superordinated'].some(subKey => 
+                            section[subKey]?.some(col => 
+                                col.name.toLowerCase().includes(searchTerm) || col.type?.toLowerCase().includes(searchTerm)
+                            )
+                        );
+                });
+                renderMenu(filteredKeys);
+                
+                if (currentTableKey && filteredKeys.includes(currentTableKey)) {
+                    renderTables(currentTableKey);
+                }
+            });
+
+            searchInputColumns.addEventListener('input', (event) => {
+                lastSearchTerm = event.target.value.toLowerCase();
+                const filteredKeys = Object.keys(jsonData).filter(key => {
+                    const section = jsonData[key];
+                    return ['columns', 'subordinated', 'superordinated'].some(subKey => 
+                        section[subKey]?.some(col => 
+                            (subKey === 'columns' && (col.name.toLowerCase().includes(lastSearchTerm) || col.description?.toLowerCase().includes(lastSearchTerm) || col.subtype_of.toLowerCase().includes(lastSearchTerm))) ||
+                            ((subKey === 'subordinated' || subKey === 'superordinated') && (col.name.toLowerCase().includes(lastSearchTerm) || col.type.toLowerCase().includes(lastSearchTerm)))
+                        )
+                    );
+                });
+
+                renderMenu(filteredKeys);
+
+                if (currentTableKey && filteredKeys.includes(currentTableKey)) {
+                    renderTables(currentTableKey);
+                } else {
+                    content.innerHTML = '';
+                }
+            });
+});
+    </script>
+</body>
+
+</html>
